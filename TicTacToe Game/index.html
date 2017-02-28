@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Raphael Play</title>
+    <link type="text/css" href="./cssfiles/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+    <link type="text/css" href="styleSheet.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="./jsfiles/raphael.js"></script>
+    <script type="text/javascript" src="./jsfiles/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="./jsfiles/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="./jsfiles/knockout.js"></script>
+    <script type="text/javascript" src="gameLogic.js"></script>
+</head>
+<body>
+    <div id="content_container">
+        <div id="title">
+            <span>SWE6853 Tic Tac Toe</span>
+            <span class="whosTurn" data-bind="text: whosTurn"></span>
+        </div>
+        <div id="sidebar">
+            <div style="margin-top:10px; padding-left:30px;">
+                <span style="font-size: 30px;">Score</span><br />
+                <span class="score-label">Player</span><span class="score-value" data-bind="text: playerScore"></span><br />
+                <span class="score-label">Computer</span><span class="score-value" data-bind="text: computerScore"></span><br />
+            </div>
+            <div style="margin-top:20px; margin-bottom: 40px; padding-left:30px;">
+                <span style="font-size: 30px;">Computer Skill</span><br />
+                &nbsp;&nbsp;<input type="radio" name="strategy" value="random" data-bind="checked: strategy" /><span class="strategy-label">Random</span><br />
+                &nbsp;&nbsp;<input type="radio" name="strategy" value="beginner" data-bind="checked: strategy" /><span class="strategy-label">Beginner</span><br />
+                &nbsp;&nbsp;<input type="radio" name="strategy" value="expert" data-bind="checked: strategy" /><span class="strategy-label">Expert</span>
+            </div>
+                        
+            <input type="button" style="margin-left:auto; margin-right:auto; display:block;" class="ui-button ui-state-default" value="New Game" data-bind="click: newGameClick" />
+        </div>
+        <div id="canvas_container"></div>
+    </div>
+</body>
+</html>
