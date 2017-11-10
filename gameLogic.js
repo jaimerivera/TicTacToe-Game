@@ -20,7 +20,7 @@ var global = {
 };
 
 
-//#region BOARD MANAGER AND BOARD OBJECTS
+//BOARD MANAGER AND BOARD OBJECTS
 //*******************************************************
 var boardManager = {
     paper: null,
@@ -228,9 +228,8 @@ var board = {
     },
 };
 
-//#endregion
 
-//#region UI VIEW MODEL -- MVVM PATTERN
+//UI VIEW MODEL -- MVVM PATTERN
 //*******************************************************
 function ViewModel(board, userState, computerState, winState) {
     var self = this;
@@ -342,9 +341,8 @@ function ViewModel(board, userState, computerState, winState) {
     observable.subscribe(observableEvents.gameWon, this.gameWonEventHandler, this);
 }
 
-//#endregion
 
-//#region OBSERVABLE IMPLEMENTATION -- OBSERVER PATTERN
+//OBSERVABLE IMPLEMENTATION -- OBSERVER PATTERN
 //*******************************************************
 var observable = {
     _subscribers: [],
@@ -376,9 +374,8 @@ var observableEvents = {
     computerReadyToMove: 2,
     gameWon: 3
 };
-//#endregion
 
-//#region GAME STATES -- STATE PATTERN
+//GAME STATES -- STATE PATTERN
 //*******************************************************
 
 //the client will make calls to the functions defined here
@@ -503,9 +500,8 @@ WinState.create = function () {
     WinState.prototype = new BaseState();
     return new WinState();
 };
-//#endregion
 
-//#region GAME LOGIC STRATEGIES -- STRATEGY PATTERN
+//GAME LOGIC STRATEGIES -- STRATEGY PATTERN
 //*******************************************************
 
 function BaseStrategy() {
@@ -820,5 +816,3 @@ ExpertStrategy.create = function () {
     ExpertStrategy.prototype = new BaseStrategy();
     return new ExpertStrategy();
 };
-
-//#endregion
