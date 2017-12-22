@@ -40,6 +40,7 @@
 
 <body>  
     <div>
+        <h1>&nbsp;</h1>
         <div class="question">Do you think Jaime did a superb job in 2017?</div>
         <div class="boxcontainer">    
             <div class="yesnobox yesbox" id="yesbox">Yes</div>
@@ -53,19 +54,21 @@
 
         var nb = document.getElementById('nobox');
 
-        function handleMouseEvent(event){
+        function handleMouseEvent(event){            
             var yMov, xMov, yPos, xPos;
             var offsetX = event.offsetX;
-            var offsetY = event.offsetY;            
+            var offsetY = event.offsetY; 
+            
+            var offsetVal = event.type == "pointerover" ? 25 : 100;
             
             offsetY <= 25 ? yMov = "top" : yMov = "bottom";
             offsetX <= 25 ? xMov = "left": xMov = "right";
 
-            if(yMov == "top") yPos = nb.offsetTop + 25;
-            else yPos = nb.offsetTop - 25;
+            if(yMov == "top") yPos = nb.offsetTop + offsetVal;
+            else yPos = nb.offsetTop - offsetVal;
 
-            if(xMov == "left") xPos = nb.offsetLeft + 25;
-            else xPos = nb.offsetLeft - 25;
+            if(xMov == "left") xPos = nb.offsetLeft + offsetVal;
+            else xPos = nb.offsetLeft - offsetVal;
 
             nb.style.top = yPos;
             nb.style.left = xPos; 
@@ -74,7 +77,7 @@
         
         nb.onpointerover =  handleMouseEvent;
         nb.ontouchstart = handleMouseEvent;
-        
+
     </script>
 </body>
 
