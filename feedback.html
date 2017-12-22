@@ -40,7 +40,7 @@
 
 <body>  
     <div>
-        <div class="question">Do you think Jaime did a great job in 2017?</div>
+        <div class="question">Do you think Jaime did a superb job in 2017?</div>
         <div class="boxcontainer">    
             <div class="yesnobox yesbox" id="yesbox">Yes</div>
             <div class="yesnobox nobox" id="nobox">No</div>
@@ -50,15 +50,16 @@
     <script>        
         var yb = document.getElementById("yesbox");
         yb.onclick = function(){alert('Thank you for your honest feedback')};
-        
+
         var nb = document.getElementById('nobox');
-        nb.onpointerover = function(event){ 
+
+        function handleMouseEvent(event){
             var yMov, xMov, yPos, xPos;
             var offsetX = event.offsetX;
             var offsetY = event.offsetY;            
-            console.log(offsetY + "  " + offsetX)
-            offsetY < 25 ? yMov = "top" : yMov = "bottom";
-            offsetX < 25 ? xMov = "left": xMov = "right";
+            
+            offsetY <= 25 ? yMov = "top" : yMov = "bottom";
+            offsetX <= 25 ? xMov = "left": xMov = "right";
 
             if(yMov == "top") yPos = nb.offsetTop + 25;
             else yPos = nb.offsetTop - 25;
@@ -67,8 +68,13 @@
             else xPos = nb.offsetLeft - 25;
 
             nb.style.top = yPos;
-            nb.style.left = xPos;      
+            nb.style.left = xPos; 
         };
+        
+        
+        nb.onpointerover =  handleMouseEvent;
+        nb.ontouchstart = handleMouseEvent;
+        
     </script>
 </body>
 
