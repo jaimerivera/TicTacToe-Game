@@ -1,0 +1,75 @@
+<html>
+<head>
+
+    <style>        
+        .boxcontainer{
+            border: 1px solid #CCC;
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .yesnobox{ 
+            min-width: 50px;
+            min-height: 50px;
+            border: 2px solid rgb(94, 94, 134);
+            display:inline-block;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 4px;
+            position: absolute;  
+            cursor:pointer;                      
+        }
+        .yesbox{
+            left: 300px;
+            top: 275px;
+        }
+        .nobox{
+            left: 400px;
+            top: 275px;
+            z-index: 99;
+        }
+        .question{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+            width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>  
+    <div>
+        <div class="question">Do you think Jaime did a great job in 2017?</div>
+        <div class="boxcontainer">    
+            <div class="yesnobox yesbox" id="yesbox">Yes</div>
+            <div class="yesnobox nobox" id="nobox">No</div>
+        </div>
+    </div>  
+
+    <script>        
+        var yb = document.getElementById("yesbox");
+        yb.onclick = function(){alert('Thank you for your honest feedback')};
+        
+        var nb = document.getElementById('nobox');
+        nb.onpointerover = function(event){ 
+            var yMov, xMov, yPos, xPos;
+            var offsetX = event.offsetX;
+            var offsetY = event.offsetY;            
+            console.log(offsetY + "  " + offsetX)
+            offsetY < 25 ? yMov = "top" : yMov = "bottom";
+            offsetX < 25 ? xMov = "left": xMov = "right";
+
+            if(yMov == "top") yPos = nb.offsetTop + 25;
+            else yPos = nb.offsetTop - 25;
+
+            if(xMov == "left") xPos = nb.offsetLeft + 25;
+            else xPos = nb.offsetLeft - 25;
+
+            nb.style.top = yPos;
+            nb.style.left = xPos;      
+        };
+    </script>
+</body>
+
+</html>
